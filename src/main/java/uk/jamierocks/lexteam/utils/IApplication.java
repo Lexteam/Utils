@@ -23,6 +23,9 @@
  */
 package uk.jamierocks.lexteam.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 
 /**
@@ -58,5 +61,14 @@ public interface IApplication {
      */
     default File getDirectory() {
         return new File(LEXTEAM_BASE_DIRECTORY, getSafeName());
+    }
+
+    /**
+     * The application's logger.
+     *
+     * @return the logger.
+     */
+    default Logger getLogger() {
+        return LoggerFactory.getLogger(getSafeName());
     }
 }
