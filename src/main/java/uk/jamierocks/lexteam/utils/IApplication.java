@@ -60,7 +60,11 @@ public interface IApplication {
      * @return the directory.
      */
     default File getDirectory() {
-        return new File(LEXTEAM_BASE_DIRECTORY, getSafeName());
+        File directory = new File(LEXTEAM_BASE_DIRECTORY, getSafeName());
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+        return directory;
     }
 
     /**
